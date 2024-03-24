@@ -1,0 +1,17 @@
+{
+    "editor.codeActionsOnSave": {
+      "source.addMissingImports": "explicit",
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+      "source.sortMembers": "explicit"
+    },
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2,
+    "cSpell.words": [
+      "Typenspeed"
+    ],
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 500,
+  } 
