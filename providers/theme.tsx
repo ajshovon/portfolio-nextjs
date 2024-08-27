@@ -1,18 +1,9 @@
-"use client";
+'use client';
 
-import { ThemeProvider } from "next-themes";
-
-import { useSearchParams } from "next/navigation";
-
+import { ThemeProvider } from 'next-themes';
 export function SiteThemeProvider({ children }: { children: React.ReactNode }) {
-  const searchParams = useSearchParams();
-  const theme = searchParams.get("theme");
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme={theme ? theme : "system"}
-      enableSystem
-    >
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       {children}
     </ThemeProvider>
   );
