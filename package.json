@@ -11,7 +11,6 @@
   "dependencies": {
     "next": "latest",
     "next-themes": "^0.3.0",
-    "puppeteer": "^23.2.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
@@ -26,6 +25,7 @@
     "eslint-config-next": "14.2.6",
     "postcss": "^8",
     "tailwindcss": "^3.4.10",
-    "typescript": "^5"
+    "typescript": "^5",
+    "puppeteer": "^23.2.0"
   }
 }

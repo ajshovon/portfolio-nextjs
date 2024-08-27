@@ -3,6 +3,7 @@ import Header from '@/components/ui/Header';
 import { SiteThemeProvider } from '@/providers/theme';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,14 +24,16 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
         <meta property="og:title" content="[.shovon]" />
         <meta property="og:description" content="Personal Portfolio || [.shovon]" />
-        <meta property="og:image" content="/api/og" />
+        <meta property="og:image" content="https://shovon.me/assets/images/og.png" />
       </head>
       <body className={`${inter.className} dark:bg-[#232425] bg-white flex min-h-svh flex-col`}>
-        <SiteThemeProvider>
-          <Header />
-          <main className="flex flex-col flex-auto items-center justify-center m-0">{children}</main>
-          <Footer />
-        </SiteThemeProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SiteThemeProvider>
+            <Header />
+            <main className="flex flex-col flex-auto items-center justify-center m-0">{children}</main>
+            <Footer />
+          </SiteThemeProvider>
+        </Suspense>
       </body>
     </html>
   );

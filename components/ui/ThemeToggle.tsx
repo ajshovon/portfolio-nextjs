@@ -11,16 +11,17 @@ export default function ThemeToggle() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted)
-    return (
-        <LuSunMoon />
-    );
+  if (!mounted) return <LuSunMoon />;
 
   if (resolvedTheme === "dark") {
-    return <FiSun onClick={() => setTheme("light")} className="cursor-pointer" />;
+    return (
+      <FiSun onClick={() => setTheme("light")} className="cursor-pointer" />
+    );
   }
 
   if (resolvedTheme === "light") {
-    return <FiMoon onClick={() => setTheme("dark")} className="cursor-pointer" />;
+    return (
+      <FiMoon onClick={() => setTheme("dark")} className="cursor-pointer" />
+    );
   }
 }
