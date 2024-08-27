@@ -1,10 +1,9 @@
-import WelcomeImage from "@/public/assets/images/welcome.gif";
-import type { Metadata } from "next";
-import Image from "next/image";
-import React from "react";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import React from 'react';
 export const metadata: Metadata = {
-  title: "About :: [.shovon]",
-  description: "Personal Portfolio || [.shovon]",
+  title: 'About :: [.shovon]',
+  description: 'Personal Portfolio || [.shovon]',
 };
 
 const AboutPage: React.FC = () => {
@@ -14,7 +13,7 @@ const AboutPage: React.FC = () => {
         <div>
           <h1 className="font-bold md:text-[42px] text-[32px]">About</h1>
           <div className="flex justify-center my-5">
-            <Image src={WelcomeImage} width={500} height={500} alt="Welcome" className="rounded-md" />
+            <Image unoptimized src="/assets/images/welcome.gif" width={500} height={500} alt="Welcome" className="rounded-md" />
           </div>
           <p className="mb-2">Hello there,</p>
           <p>Myself Jubayer Ahmad Shovon, a 22 year old tech enthusiast from Bangladesh. Exploring interesting techs and learning along the way having some fun!</p>

@@ -22,7 +22,6 @@ export default function RootLayout({
         <SiteThemeProvider>
           <Header />
           <main className="flex flex-col flex-auto items-center justify-center m-0">{children}</main>
-
           <Footer />
         </SiteThemeProvider>
       </body>
