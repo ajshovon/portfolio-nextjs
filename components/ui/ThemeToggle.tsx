@@ -1,8 +1,8 @@
 "use client";
 
-import { FiSun, FiMoon } from "react-icons/fi";
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { LuSunMoon } from "react-icons/lu";
 
 export default function ThemeToggle() {

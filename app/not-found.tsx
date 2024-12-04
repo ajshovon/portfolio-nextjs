@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import React from "react";
-import { BsRobot } from "react-icons/bs";
-import { TbSmartHome } from "react-icons/tb";
+import Link from 'next/link';
+import React from 'react';
+import { BsRobot } from 'react-icons/bs';
+import { TbSmartHome } from 'react-icons/tb';
 
 const NotFoundPage: React.FC = () => {
   return (

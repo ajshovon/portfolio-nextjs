@@ -46,7 +46,7 @@ async function generateImages() {
     .png()
     .toBuffer();
 
-  fs.writeFileSync('public/assets/images/og.png', combinedImageBuffer);
+  fs.writeFileSync('app/opengraph-image.png', combinedImageBuffer);
   console.log('OG image generated successfully.');
 }
 
