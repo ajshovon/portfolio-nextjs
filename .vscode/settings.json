@@ -13,5 +13,5 @@
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
     "prettier.singleQuote": true,
-    "prettier.printWidth": 500,
+    "prettier.printWidth": 300,
   } 
