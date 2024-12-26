@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: '[.shovon]',
   description: 'Personal Portfolio || [.shovon]',
   metadataBase: new URL('https://shovon.me'),
+  openGraph: {
+    images: '/og-image.png',
+  },
 };
 
 export default function RootLayout({
