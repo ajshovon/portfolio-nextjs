@@ -26,7 +26,6 @@
     "eslint-config-next": "15.1.2",
     "knip": "^5.41.1",
     "postcss": "^8",
-    "puppeteer": "^23.11.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   }

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="h-full w-full flex flex-col gap-8 justify-center items-center dark:text-[#a9a9b3] text-[#222222]">
-      <Image src="/assets/images/61104583.jpg" alt="avatar" width={160} height={160} className="rounded-full ring-8 ring-opacity-30 ring-gray-400" />
+      <Image src="/assets/images/61104583.jpg" alt="avatar" width={160} height={160} fetchPriority="high" className="rounded-full ring-8 ring-opacity-30 ring-gray-400" />
 
       <h1 className="font-bold md:text-[42px] text-[32px] text-center">Jubayer Ahmad Shovon</h1>
       <div className="text-center">
