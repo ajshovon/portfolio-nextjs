@@ -29,7 +29,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y apt-utils sshpass zstd
           mkdir -p ~/.ssh
-          ssh-keyscan -p $VPS_SSH_PORT $VPS_HOST >> ~/.ssh/known_hosts
+          ssh-keyscan -p $VPS_SSH_PORT -T 240 -t rsa -4 $VPS_HOST >> ~/.ssh/known_hosts
           sshpass -p "$VPS_PASSWORD" scp -P "$VPS_SSH_PORT" -o StrictHostKeyChecking=no docker-compose.yml $VPS_USER@$VPS_HOST:/home/$VPS_USER/portfolio/docker-compose.yml
       - name: Deploy Docker Image to VPS
         env:
