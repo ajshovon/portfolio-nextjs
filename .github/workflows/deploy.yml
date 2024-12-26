@@ -1,0 +1,44 @@
+name: Deploy Portfolio
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -t portfolio:latest .
+
+      - name: Save and compress Docker image
+        run: docker save portfolio:latest | zstd -o portfolio.tar.zst
+
+      - name: Upload Docker Compose file to VPS
+        env:
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT }}
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y sshpass zstd
+          mkdir -p ~/.ssh
+          ssh-keyscan $VPS_HOST >> ~/.ssh/known_hosts
+          sshpass -p "$VPS_PASSWORD" scp -P "$VPS_SSH_PORT" -o StrictHostKeyChecking=no docker-compose.yml $VPS_USER@$VPS_HOST:/home/$VPS_USER/portfolio/docker-compose.yml
+
+      - name: Deploy Docker Image and Download Environment File to VPS
+        env:
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+        run: |
+              sshpass -p "$VPS_PASSWORD" scp -P "$VPS_SSH_PORT" -o StrictHostKeyChecking=no portfolio.tar.zst $VPS_USER@$VPS_HOST:/home/$VPS_USER/portfolio/portfolio.tar.zst
+              sshpass -p "$VPS_PASSWORD" ssh -p "$VPS_SSH_PORT" -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "
+              docker load -i /home/$VPS_USER/portfolio/portfolio.tar.zst &&
+              docker compose -f /home/$VPS_USER/portfolio/docker-compose.yml up -d"

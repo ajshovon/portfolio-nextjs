@@ -1,0 +1,5 @@
+services:
+  app:
+    container_name: portfolio
+    image: portfolio:latest
+    network_mode: host
