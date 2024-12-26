@@ -42,7 +42,12 @@ ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 
 # Copy only necessary files for production
-COPY --from=build /app/.next /app/.next
+COPY --from=build /app/public ./public
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=build --chown=node:node /app/.next/standalone ./
+COPY --from=build --chown=node:node /app/.next/static ./.next/static
 
 # Use a non-root user for security
 USER node
