@@ -2,4 +2,6 @@ services:
   app:
     container_name: portfolio
     image: portfolio:latest
+    environment:
+      PORT: 7000
     network_mode: host

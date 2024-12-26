@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'Personal Portfolio || [.shovon]',
   metadataBase: new URL('https://shovon.me'),
   openGraph: {
-    images: '/og-image.png',
+    images: '/assets/images/og-image.png',
   },
 };
 

@@ -6,15 +6,13 @@ FROM node:lts-alpine3.21 AS base
 # Create app directory
 WORKDIR /app
 
-# Copy package files
-COPY --chown=node:node package.json package-lock.json ./
-
-RUN npm ci --omit=dev
-
 ###################
 # BUILD STAGE
 ###################
 FROM base AS build
+
+# Copy package files
+COPY --chown=node:node package.json package-lock.json ./
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
@@ -27,9 +25,6 @@ COPY --chown=node:node . .
 # Build the application
 RUN npm run build
 
-# Remove build-time dependencies and cache
-RUN rm -rf /app/.next/cache
-
 ###################
 # PRODUCTION STAGE
 ###################
@@ -37,9 +32,6 @@ FROM base AS prod
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-
-# Create app directory
-WORKDIR /app
 
 # Copy only necessary files for production
 COPY --from=build /app/public ./public
@@ -52,5 +44,7 @@ COPY --from=build --chown=node:node /app/.next/static ./.next/static
 # Use a non-root user for security
 USER node
 
+ENV HOSTNAME="0.0.0.0"
+
 # Start the application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
